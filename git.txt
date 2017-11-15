@@ -1,0 +1,30 @@
+一、提交代码到远程仓库：
+1.下载Git
+2.创建代码库
+3.设置Git
+	在Git工作之前，为了能够跟踪到是谁对这段代码进行了修改，需要做一个配置信息，主要是用户名和邮箱，如下
+	git config  --global user.name "your_username"
+	git config  --global user.email "your_email"
+4.加载文件(如果到新的文件夹，则先git init)
+	当我们配置完信息之后，需要将我们的修改信息，添加到git上来，命令为：
+	git add .
+	.  表示所有的文件，文件夹和子文件夹
+	也可以指定名称 如
+	git  add HelloWord.java
+5.提交文件
+	提交文件的时候，需要附带着有意义的注释，描述了这段代码现在的状态。命令如下：
+	git commit -m "initial commit"
+6.推送到远程
+	仅仅只是使用了上面的命令，还是不能将代码提交到远程服务器上去，原因是git在本地也是有代码仓库的！！！
+	所以，如果我们需要将代码提交到远程服务器上面去，需要先配置部分信息，如下：
+	git remote add origin https://your_username@bitbucket.org/your_username/name_of_remote_repository.git 
+	
+	推送你的本地代码库的主干分支到你的远程代码库，可以使用如下命令：
+	git push origin master 
+	
+问题	
+	error: failed to push some refs to 'git@github.com:yufu1993/utils.git'
+	错误的主要原因是github中的README.md文件不在本地代码目录中
+	    解决：可以通过如下命令进行代码合并【注：pull=fetch+merge】git pull --rebase origin master
+	执行上面代码后可以看到本地代码库中多了README.md文件
+	此时再执行语句 git push -u origin master即可完成代码上传到github
